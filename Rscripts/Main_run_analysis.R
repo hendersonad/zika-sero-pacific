@@ -14,7 +14,7 @@ library('irr')
 library('mgcv')
 
 rm(list=ls()) # Clear workspace
-setwd("~/Documents/zika-sero-pacific/")
+setwd("~/Documents/GitHub/zika-sero-pacific/")
 
 # load functions for plotting and tables ----------------------------------
 source("Rscripts/Functions/functions_zika_seroprevalence_tables_figures.R")

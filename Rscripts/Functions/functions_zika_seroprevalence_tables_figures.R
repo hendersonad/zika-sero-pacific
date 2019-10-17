@@ -394,7 +394,7 @@ plot_fig1 <- function(virus){
     data_pick_jj <- fp_pcr[jj,] %>% select(date_x,viruses_1); data_pick_jj[viruses_1][viruses_1[is.na(data_pick_jj[,viruses_1])]] <- 0
     tally_v <- 0
     
-    for(ii in c(1,3,5)){
+    for(ii in c(1,3,5)){ # As only DENV-1, DENV-3 and ZIKV circulating
       data_pick_ii <-  data_pick_jj[viruses_1][ii]
       if(ii==1){ min_y <- -1 }else{ min_y <- tally_v} # remove axes points
       if(data_pick_ii>0){
