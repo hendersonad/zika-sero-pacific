@@ -204,8 +204,6 @@ tab1_create <- function(virus){
   conf15 <- signif(as.numeric(100*binom.test(round(as.numeric(output15[1])*sum(fp_serology_weighted$n2015)/100), sum(fp_serology_weighted$n2015))$conf),3)
   write_csv(data.frame(rbind(c(conf14,output14),c(conf15,output15))),"outputs/age_adjusted_ZIKV.csv")
 
-
-
   # Descriptive table
   table_age <- cbind(head(fp_pop_data_over_X,-1),fp_serology_weighted$n2014,fp_serology_weighted$n2015)
   names(table_age) <- c("age","population","2014 survey","2015 survey")
@@ -265,6 +263,7 @@ plot_fig1 <- function(virus){
   ci_calc1 <- binom.test(x=as.numeric(fj_summary[1,2]), n=nn_children)
   ci_calc2 <- binom.test(x=as.numeric(fj_summary[1,3]), n=nn_children)
   ci_calc3 <- binom.test(x=as.numeric(fj_summary[1,4]), n=nn_children)
+  
   # adults (13,15,17)
   ci_calc4 <- binom.test(x=as.numeric(fj_summary[2,2]), n=nn_adults)
   ci_calc5 <- binom.test(x=as.numeric(fj_summary[2,3]), n=nn_adults)
@@ -282,7 +281,6 @@ plot_fig1 <- function(virus){
   
   full_age_summary <- rbind(fj_sero_plot, fp_sero_plot)
   rownames(full_age_summary) <- NULL
-  #full_age_summary <- filter(full_age_summary, year!=2012.5)
   
   full_age_summary$Country <- factor(full_age_summary$Country)
   levels(full_age_summary$Country) <- c("Fiji", "French Polynesia")
@@ -801,8 +799,7 @@ plot_comparison_MIA_NT <- function(){
   fj_data_by_denv <- fj_data_by_denv %>%
     mutate_at(.funs=~pmax(.,0), .vars=20:34) %>%
     mutate(Zs_rise=Zs15-Zs13, Zs_drop=Zs17-Zs15) %>%
-    drop_na("Zs13", "Zs15", "Zs17") #%>%
-  #  filter(!is.na(Zs17) & Zs_rise>0 & Zs13<2)
+    drop_na("Zs13", "Zs15", "Zs17")
 
   # Examine pattern of mean DENV
   dXc <- 2
@@ -816,7 +813,9 @@ plot_comparison_MIA_NT <- function(){
   
   # Plot by scenario
   par(mfrow=c(1,3),mar=c(3,3,1,1),las=0,mgp=c(2,0.7,0))
-  kk_s <- 5 # Have also tested with 2-6 as sensitivity - same result
+  kk_s <- 5 # Have also tested with 2-6 as sensitivity
+            # gam.check() used to test for k-index<1
+  
   xmax <- 4
   shift1 <- 0.006 # shift points for plotting
 
