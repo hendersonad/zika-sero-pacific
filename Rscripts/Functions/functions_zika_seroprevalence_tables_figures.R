@@ -681,7 +681,7 @@ tests_for_association <- function(){
   )
 }
 
-# Figure 3 - ZIKV titre distributions -----------------------------
+# Figure 4 - ZIKV titre distributions -----------------------------
 
 plot_ZIKV_titres <- function(){
 
@@ -727,7 +727,7 @@ plot_ZIKV_titres <- function(){
   
 }
 
-# # Supplementary estimate - Comparison of MIA and neut datasets -----------------------------
+# Figure 3 - Comparison of MIA and neut datasets -----------------------------
 
 plot_comparison_MIA_NT <- function(){
   
@@ -883,7 +883,7 @@ plot_comparison_MIA_NT <- function(){
 
 
 
-# Figure 3 - supplement 1 - Plot individual-level neutralisation titres ---------------------------------------------------
+# Figure 4 - supplement 1 - Plot individual-level neutralisation titres ---------------------------------------------------
 
 
 plot.individual.2017 <- function(){
@@ -933,7 +933,7 @@ plot.individual.2017 <- function(){
 }
 
 
-# Figure 3 - supplement 2 - neutralization titre correlation between DENV1-4 and ZIKV -----
+# Figure 4 - supplement 2 - neutralization titre correlation between DENV1-4 and ZIKV -----
 plot_supp_titres <- function(denv_prior=F){
   
   ## Only use seronegative to all 5 arboviruses in 2013
